@@ -668,7 +668,7 @@ SELECT NUM, MEMBER_ID, MEMBER_PW, MEMBER_NAME,  MOBILE, EMAIL, ENTRY_DATE, GRADE
 
 */
 
-
+/*
 SELECT *
 	FROM(
 		SELECT ROWNUM AS NUM, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MOBILE, MILEAGE
@@ -676,7 +676,31 @@ SELECT *
 							FROM TEST
 							ORDER BY MILEAGE
 						)
-	) WHERE NUM BETWEEN (1 * 15) +1 AND (2 * 15);
+	) WHERE NUM BETWEEN (10 * 15) +1 AND (11 * 15);
+*/
+
+/*
+	SELECT COUNT(*)
+		FROM(
+			SELECT ROWNUM AS NUM, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MOBILE, MILEAGE
+				FROM (SELECT *
+								FROM TEST
+								ORDER BY MILEAGE
+							)  WHERE ROWNUM <= 10 * 15
+		)  ;
+*/
+
+
+SELECT *
+	FROM(
+		SELECT ROWNUM AS NUM, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MOBILE, MILEAGE
+			FROM (SELECT *
+							FROM TEST
+							ORDER BY MILEAGE
+						)  WHERE ROWNUM <= 11 * 15
+	) WHERE NUM >= 10*15 ;
+
+
 	/*
 	NUM MEMBER_ID			  MEMBER_PW	       MEMBER_NAME	    MOBILE		    MILEAGE
 ---------- ------------------------------ -------------------- -------------------- -------------------- ----------
